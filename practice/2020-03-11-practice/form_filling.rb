@@ -36,6 +36,7 @@ def main
     profession.concat("Известный\n")
   end
 
+  puts "Возможные профессии:\n"
   puts profession
 end
 
