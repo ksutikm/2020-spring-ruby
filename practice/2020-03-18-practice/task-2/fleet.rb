@@ -16,9 +16,9 @@ class Fleet
     json_data = File.read(file_name)
     ruby_objects = JSON.parse(json_data)
     ruby_objects.map do |ruby_objects|
-      add(Auto.new(ruby_objects["mark"], ruby_objects["model"], ruby_objects["year"], ruby_objects["consumption"]))
+      element = Auto.new(ruby_objects["mark"], ruby_objects["model"], ruby_objects["year"], ruby_objects["consumption"])
+      add(element)
     end
-    #pp ruby_objects
   end
 
   def average_consumption
@@ -27,17 +27,17 @@ class Fleet
   end
 
   def number_by_brand(brand)
-    @cars.reduce(0) { |sum, car| sum += car.brand == brand ? 1 : 0 }
+    @cars.reduce(0) { |sum, car| sum += car.brand == brand.encode("UTF-8") ? 1 : 0 }
   end
 
   def number_by_model(model)
-    @cars.reduce(0) { |sum, car| sum += car.model == model ? 1 : 0 }
+    @cars.reduce(0) { |sum, car| sum += car.model == model.encode("UTF-8") ? 1 : 0 }
   end
 
   def consumption_by_brand(brand)
     sum, count = 0.0, 0
     @cars.map do |car|
-      if car.brand == brand
+      if car.brand == brand.encode("UTF-8")
         count, sum = count + 1, sum + car.gasoline_consumption
       end
     end
