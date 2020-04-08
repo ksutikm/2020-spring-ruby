@@ -1,4 +1,6 @@
 require "tty-prompt"
+require_relative "..\lib\train.rb"
+require_relative "..\lib\station.rb"
 
 def main
   prompt = TTY::Prompt.new
@@ -8,6 +10,12 @@ def main
   when choices[1]
   when choices[2]
   end
+
+  reader = TrainReader.new
+  trains = reader.read_in_trains("..\data\stop.csv")
+  stations = reader.read_stations("..\data\stations.csv")
+  pp trains
+  pp stations
 end
 
 if __FILE__ == $0
