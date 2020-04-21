@@ -5,6 +5,7 @@ def main
   my_complex_two = MyComplex.new(3.0, 7.0)
   pp my_complex_one
   pp my_complex_two
+  p my_complex_one
   puts my_complex_one
   puts my_complex_two
   puts "real: #{my_complex_two.real}"

@@ -8,7 +8,7 @@ require_relative "station_in_stock"
 require_relative "station"
 
 class TrainReader
-  def read_in_trains(*filenames)
+  def read_trains(*filenames)
     trains = Train.new
     filenames.each do |filename|
       CSV.foreach(filename, headers: true) do |row|
@@ -39,8 +39,8 @@ class TrainReader
   end
 end
 
-reader = TrainReader.new
-trains = reader.read_in_trains("..\data\stop.csv")
-stations = reader.read_stations("..\data\stations.csv")
-pp trains
-pp stations
+# reader = TrainReader.new
+# trains = reader.read_trains("..\data\stop.csv")
+# stations = reader.read_stations("..\data\stations.csv")
+# pp trains
+# pp stations
