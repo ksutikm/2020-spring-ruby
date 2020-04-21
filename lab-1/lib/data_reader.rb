@@ -18,7 +18,7 @@ module DataReader
 
   def self.read_stations
     stations = {}
-    CSV.foreach(STATIONS_FILE, headers: true) do |row|
+    CSV.foreach(STATIONS_FILE, headers: true, encoding: 'utf-8') do |row|
       stations[row['CODE']] = row['TITLE'].strip
     end
     stations
@@ -27,7 +27,7 @@ module DataReader
   def self.read_stops(stations)
     train_list = TrainList.new
     last_train = Train.new(-1)
-    CSV.foreach(STOPS_FILE, headers: true) do |row|
+    CSV.foreach(STOPS_FILE, headers: true, encoding: 'utf-8') do |row|
       if row['TRAINID'].to_i != last_train.id
         last_train = Train.new(row['TRAINID'].to_i)
         train_list.add_train(last_train)
