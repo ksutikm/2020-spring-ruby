@@ -1,45 +1,53 @@
 # frozen_string_literal: true
 
 require 'tty-prompt'
+require 'pathname'
+require_relative 'organization'
+require_relative 'organization_list'
 
 # The main class of our application
 class Menu
+  attr_reader :org_list
+
   def initialize
     @prompt = TTY::Prompt.new
-    @train_list = DataReader.read_trains
+    @org_list = OrganizationList.new
   end
 
   MAIN_MENU_CHOICES = [
-    { name: 'Вывести расписание движения поездов', value: :rasp },
-    { name: 'Вывести список поездов, по количеству реальных остановок',
-      value: :stops },
+    { name: 'Список двоишников', value: :v1 },
+    { name: 'Статистика тестирования', value: :v2 },
+    { name: 'Пересчет оценок', value: :v3 },
+    { name: 'Проверка на списывание', value: :v4 },
+    { name: '3 самых сложных вопроса', value: :v5 },
     { name: 'Завершить работу приложения', value: :exit }
   ].freeze
+
+  def create_menu
+    path_name = Pathname.new(File.expand_path('../data/test_results.csv', __dir__))
+    puts 'Нет файла' unless path_name.exist?
+    @org_list = @org_list.reader_data(path_name)
+  end
 
   def show_menu
     loop do
       action = @prompt.select('Выберите действие', MAIN_MENU_CHOICES)
       break if action == :exit
 
-      show_rasp if action == :rasp
-      show_stops if action == :stops
+      show_two_marks if action == :v1
+      show_difficult if action == :v5
     end
   end
 
-  def show_rasp
-    train = @prompt.select('Выберите поезд') do |menu|
-      @train_list.each_train do |train_choice|
-        menu.choice(train_choice, train_choice)
-      end
-    end
-    train.each_stop.with_index do |stop, index|
-      puts "#{index + 1}: #{stop}"
-    end
+
+  def show_difficult
+    
   end
 
-  def show_stops
-    @train_list.each_train_by_length do |train|
-      puts "Остановки: #{train.stop_count} Маршрут: #{train}"
+  def show_two_marks
+    g = []
+    org_list.each do
+
     end
   end
 end
