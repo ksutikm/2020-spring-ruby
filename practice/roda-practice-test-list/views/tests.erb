@@ -3,7 +3,7 @@
         <h3>Список тестов</h3>
     </div>
 
-   <div class="large-12 cell">
+    <div class="large-12 cell">
         <form method="get">
             <div class="grid-x grid-padding-x">
                 <% unless @params[:errors].empty? %>
@@ -12,7 +12,7 @@
                         Параметры фильтра введены неверно, данные не были отфильтрованы
                         </p>
                         <ul>
-                        <% @params[:errors].each do |error| %> 
+                        <% @params[:errors].each do |error| %>
                             <li><%= error %></li>
                         <% end %>
                         </ul>
@@ -37,6 +37,10 @@
     </div>
 
     <div class="large-12 cell">
+        <a href="tests/new" class="button">Добавить тест</a>
+    </div>
+
+    <div class="large-12 cell">
         <% if @filtered_tests.empty? %>
             <div class="callout">
                 Согласно вашему фильтру никаких тестов не было найдено
@@ -51,7 +55,7 @@
             </tr>
             </thead>
             <tbody>
-            <% @tests.each_test do |test| %>
+            <% @filtered_tests.each do |test| %>
                 <tr>
                 <td><%= test.name %></td>
                 <td><%= test.date %></td>

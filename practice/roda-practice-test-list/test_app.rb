@@ -18,9 +18,9 @@ class TestApp < Roda
     r.public if opts[:serve_static]
 
     @tests = TestList.new([
-                            Test.new('Lab №1', '2020-04-05', 'Ruby'),
-                            Test.new('Lab №2', '2020-04-20', 'bla bla Ruby'),
-                            Test.new('examen', '2020-06-20', 'ggwp')
+                            Test.new('Лабораторая №1', '2020-04-05', 'Проверка знаний по языку Ruby'),
+                            Test.new('Лабораторая №2', '2020-04-20', 'Проверка умений написания приложений на языке Ruby'),
+                            Test.new('Финальный экзамен', '2020-06-20', 'Проверка всех знаний и умений')
                           ])
 
     r.root do
@@ -28,15 +28,24 @@ class TestApp < Roda
     end
 
     r.on 'tests' do
-      @params = InputValidators.check_date_description(r.params['date'], r.params['description'])
 
-      @filtered_tests = if @params[:errors].empty?
-                          @tests.filter(@params[:date], @params[:description])
-                        else
-                          @tests.all_tests
-                          end
+      r.is do
+        @params = InputValidators.check_date_description(r.params['date'], r.params['description'])
 
-      view('tests')
+        @filtered_tests = if @params[:errors].empty?
+                            @tests.filter(@params[:date], @params[:description])
+                          else
+                            @tests.all_tests
+                            end
+
+        view('tests')
+      end
+
+      r.on 'new' do
+        r.get do
+          view('new_test')
+        end
+      end
     end
   end
 end
