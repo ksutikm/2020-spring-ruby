@@ -1,0 +1,40 @@
+<div class="grid-x grid-padding-x">
+    <div class="large-12 cell">
+        <h3>Статистика</h3>
+    </div>
+
+    <div class="large-12 cell">
+        <form method="post">
+            <div class="grid-container">
+                <div class="grid-x grid-padding-x">
+                <div class="large-12 cell">
+                    <label>Год
+                        <input type="text" placeholder="2020" name="year" value="<%= @params && @params[:yaer] %>">
+                    </label>
+                </div>
+                <div class="large-12 cell">
+                    <a href="#" class="button">Показать</a>
+                </div>
+                <div class="large-12 cell">
+                    <h5>Список годов</h5>
+                </div>
+                <div class="large-12 cell">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Год</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <% @stats_years.each do |key, value| %>
+                            <tr>
+                            <td><%= key %></td>
+                            </tr>
+                        <% end %>
+                        </tbody>
+                        </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

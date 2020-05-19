@@ -11,6 +11,10 @@ class TestList
     @tests = tests
   end
 
+  def add_test(test)
+    @tests.append(test)
+  end
+
   def all_tests
     @tests.dup
   end
