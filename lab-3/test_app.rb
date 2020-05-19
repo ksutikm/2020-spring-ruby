@@ -15,13 +15,13 @@ class TestApp < Roda
   end
 
   opts[:books] = BookList.new([
-    Book.new('Толстой', 'Преступление и наказание', '2020-06-17'),
+    Book.new('Толстой', 'Идиот', '2020-06-17'),
     Book.new('Данте', 'Божественная комедия', '2020-05-18'),
     Book.new('Ницше', 'Заратустра', '2020-04-20'),
-    Book.new('Толстой', 'Пр', '2018-06-17'),
-    Book.new('Данте', 'Боже', '2017-05-18'),
-    Book.new('Ницше', 'Зара', '2015-04-20'),
-    Book.new('Толстой', 'Преступление и наказание', '2020-06-17'),
+    Book.new('Толстой', 'Идиот', '2018-06-17'),
+    Book.new('Данте', 'Божественная комедия', '2017-05-18'),
+    Book.new('Ницше', 'Заратустра', '2015-04-20'),
+    Book.new('Толстой', 'Идиот', '2020-06-17'),
     Book.new('Данте', 'Божественная комедия', '2020-05-18'),
     Book.new('Ницше', 'Заратустра', '2020-04-20'),
   ])
@@ -40,9 +40,25 @@ class TestApp < Roda
 
       r.on 'statistic' do
         @stats_years = opts[:books].years
+        r.is do
+          
+          view('statistic')
+        end
+        
 
+        
+        r.on 'stats' do
 
-        view('statistic')
+          r.get do
+            view('stats')
+          end
+
+          r.post do
+            pp r.params['year']
+            # pp @month = @stats_years[r.params['year']]
+            view('stats')
+          end
+        end
       end
 
       r.on 'books' do

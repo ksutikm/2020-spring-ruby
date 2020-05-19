@@ -26,4 +26,9 @@ class Book
     d = @date.split('-')
     d[0]
   end
+
+  def book_month
+    d = @date.split('-')
+    d[1].to_i
+  end
 end
