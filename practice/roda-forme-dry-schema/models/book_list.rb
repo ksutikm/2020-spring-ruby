@@ -26,4 +26,10 @@ class BookList
       author: parameters[:author]
     )
   end
+
+  def update_book(book_id, parameters)
+    book = @books[book_id]
+    book.title = parameters[:title]
+    book.author = parameters[:author]
+  end
 end
