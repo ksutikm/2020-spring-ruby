@@ -32,4 +32,8 @@ class BookList
     book.title = parameters[:title]
     book.author = parameters[:author]
   end
+
+  def delete_book(book_id)
+    @books.delete(book_id)
+  end
 end
