@@ -7,6 +7,9 @@
       <%= f.input(:author, type: :text, label: 'Автор', placeholder: 'Эрих Фромм') %>
     </div>
     <div class="large-12 cell">
+      <%= f.input(:published_on, type: :text, label: 'Автор', placeholder: '1956-08-08') %>
+    </div>
+    <div class="large-12 cell">
       <%= f.button(value: form_type, class: 'button') %>
       <a href="<%= back_location %>" class="button secondary">Отмена</a>
     </div>
