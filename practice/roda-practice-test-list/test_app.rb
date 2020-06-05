@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
 require 'roda'
+require 'forme'
 require_relative 'models'
 
 # The core class of the web application for managing tests
 class TestApp < Roda
   opts[:root] = __dir__
   plugin :environments
+  plugin :forme
   plugin :render
 
   configure :development do
