@@ -25,19 +25,22 @@ class BookApplication < Roda
         id: 21,
         title: 'Идиот',
         author: 'Лев Толстой',
-        published_on: Date.parse('2013-06-18')
+        published_on: Date.parse('2013-06-18'),
+        mark: 5
       ),
       Book.new(
         id: 7,
         title: 'Божественная комедия',
         author: 'Данте Алигьери',
-        published_on: Date.parse('2000-05-20')
+        published_on: Date.parse('2000-05-20'),
+        mark: 4
       ),
       Book.new(
         id: 2,
         title: 'Заратустра',
         author: 'Фридрих Ницше',
-        published_on: Date.parse('1935-07-08')
+        published_on: Date.parse('1935-07-08'),
+        mark: 5
       )
     ]
   )

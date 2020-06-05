@@ -7,7 +7,10 @@
       <%= f.input(:author, type: :text, label: 'Автор', placeholder: 'Эрих Фромм') %>
     </div>
     <div class="large-12 cell">
-      <%= f.input(:published_on, type: :date, label: 'Автор', placeholder: '1956-08-08') %>
+      <%= f.input(:published_on, type: :date, label: 'Дата публикации', placeholder: '1956-08-08') %>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:mark, type: :text, label: 'Оценка', placeholder: '5') %>
     </div>
     <div class="large-12 cell">
       <%= f.button(value: form_type, class: 'button') %>
