@@ -27,7 +27,8 @@ class BookApplication < Roda
         author: 'Лев Толстой',
         published_on: Date.parse('2013-06-18'),
         mark: 5,
-        circulation: 3.5
+        circulation: 3.5,
+        cover_type: BookCoverType::THICK
       ),
       Book.new(
         id: 7,
@@ -35,7 +36,8 @@ class BookApplication < Roda
         author: 'Данте Алигьери',
         published_on: Date.parse('2000-05-20'),
         mark: 4,
-        circulation: 9
+        circulation: 9,
+        cover_type: BookCoverType::THIN
       ),
       Book.new(
         id: 2,
@@ -43,7 +45,8 @@ class BookApplication < Roda
         author: 'Фридрих Ницше',
         published_on: Date.parse('1935-07-08'),
         mark: 5,
-        circulation: 15
+        circulation: 15,
+        cover_type: BookCoverType::THIN
       )
     ]
   )
