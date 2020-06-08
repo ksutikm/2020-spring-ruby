@@ -24,7 +24,7 @@ class BookList
               else
                 @books.keys.max + 1
               end
-    @books[book_id] = Book.new(
+    book = Book.new(
       id: book_id,
       title: parameters[:title],
       author: parameters[:author],
@@ -33,7 +33,8 @@ class BookList
       circulation: parameters[:circulation],
       cover_type: parameters[:cover_type]
     )
-    book_id
+    @books[book_id] = book
+    book
   end
 
   def add_real_book(book)
