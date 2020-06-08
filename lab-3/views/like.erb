@@ -1,0 +1,28 @@
+<div class="grid-x grid-padding-x">
+    <div class="large-12 cell">
+        <h3>Список любимых книг</h3>
+    </div>
+
+    <div class="large-12 cell">
+        <table>
+            <thead>
+            <tr>
+                <th>Автор</th>
+                <th>Название</th>
+                <th>Дата</th>
+                <th>Комментарий</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% @likes_bools.each do |book| %>
+                <tr>
+                    <td><%= book.author %></td>
+                    <td>"<%= book.name %>"</td>
+                    <td><%= book.date %></td>
+                    <td><%= book.comment %></td>
+                </tr>
+            <% end %>
+            </tbody>
+            </table>
+    </div>
+</div>
