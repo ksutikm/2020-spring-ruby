@@ -2,6 +2,9 @@
 
 class BookApplication
   hash_branch('books') do |r|
+    append_view_subdir('books')
+    set_layout_options(template: '../views/layout')
+
     r.is do
       @books = opts[:books].all_books
       view('books')
