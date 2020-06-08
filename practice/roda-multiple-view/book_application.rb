@@ -27,7 +27,7 @@ class BookApplication < Roda
     view('not_found')
   end
 
-  require_relative 'routes/book.rb'
+  require_relative 'routes/books.rb'
 
   route do |r|
     r.public if opts[:serve_static]
