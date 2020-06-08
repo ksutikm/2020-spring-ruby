@@ -1,0 +1,30 @@
+---
+:book_list:
+- :id: 1
+  :title: Искусство любить
+  :author: Эрих Фромм
+  :published_on: 1945-01-20
+  :mark: 5
+  :circulation: 5.0
+  :cover_type: Тонкая
+- :id: 2
+  :title: Идиот
+  :author: Лев Толстой
+  :published_on: 2013-06-18
+  :mark: 5
+  :circulation: 3.5
+  :cover_type: Тонкая
+- :id: 3
+  :title: Божественная комедия
+  :author: Данте Алигьери
+  :published_on: 2000-05-20
+  :mark: 4
+  :circulation: 9.0
+  :cover_type: Тонкая
+- :id: 4
+  :title: Заратустра
+  :author: Фридрих Ницше
+  :published_on: 1935-07-08
+  :mark: 5
+  :circulation: 15.0
+  :cover_type: Толстая

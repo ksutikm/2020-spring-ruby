@@ -19,37 +19,8 @@ class BookApplication < Roda
     opts[:serve_static] = true
   end
 
-  opts[:books] = BookList.new(
-    [
-      Book.new(
-        id: 21,
-        title: 'Идиот',
-        author: 'Лев Толстой',
-        published_on: Date.parse('2013-06-18'),
-        mark: 5,
-        circulation: 3.5,
-        cover_type: BookCoverType::THICK
-      ),
-      Book.new(
-        id: 7,
-        title: 'Божественная комедия',
-        author: 'Данте Алигьери',
-        published_on: Date.parse('2000-05-20'),
-        mark: 4,
-        circulation: 9,
-        cover_type: BookCoverType::THIN
-      ),
-      Book.new(
-        id: 2,
-        title: 'Заратустра',
-        author: 'Фридрих Ницше',
-        published_on: Date.parse('1935-07-08'),
-        mark: 5,
-        circulation: 15,
-        cover_type: BookCoverType::THIN
-      )
-    ]
-  )
+  opts[:store] = Store.new
+  opts[:books] = opts[:store].book_list
 
   status_handler(404) do
     view('not_found')
