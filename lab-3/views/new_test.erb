@@ -14,21 +14,41 @@
     <form method="post">
         <div class="grid-container">
             <div class="grid-x grid-padding-x">
-            <div class="large-12 cell">
-                <label>Автор
-                    <input type="text" placeholder="Лукъяненко" name="author" value="<%= @params && @params[:author] %>">
-                </label>
-            </div>
-            <div class="large-12 cell">
-                <label>Название
-                    <input type="text" placeholder="Черновик-Чистовик" name="name" value="<%= @params && @params[:name] %>">
-                </label>
-            </div>
-            <div class="large-12 cell">
-                <label>Дата
-                    <input type="text" placeholder="2020-01-15" name="date" value="<%= @params && @params[:date] %>">
-                </label>
-            </div>
+                <div class="large-12 cell">
+                    <label>Автор
+                        <input type="text" placeholder="Лукъяненко" name="author" value="<%= @params && @params[:author] %>">
+                    </label>
+                </div>
+                <div class="large-12 cell">
+                    <label>Название
+                        <input type="text" placeholder="Черновик-Чистовик" name="name" value="<%= @params && @params[:name] %>">
+                    </label>
+                </div>
+                <div class="large-12 cell">
+                    <label>Дата
+                        <input type="text" placeholder="2020-01-15" name="date" value="<%= @params && @params[:date] %>">
+                    </label>
+                </div>
+                <div class="large-12 cell">
+                    <label>Формат чтения
+                        <input type="text" placeholder="бумажная книга" name="format" value="<%= @params && @params[:format] %>">
+                    </label>
+                </div>
+                <div class="large-12 cell">
+                    <label>Размер произведения
+                        <input type="text" placeholder="количество страниц для бумажной книги" name="size" value="<%= @params && @params[:size] %>">
+                    </label>
+                </div>
+                <div class="large-12 cell">
+                    <label>Оценка
+                        <input type="text" placeholder="10" name="estimation" value="<%= @estimation && @params[:estimation] %>">
+                    </label>
+                </div>
+                <div class="large-12 cell">
+                    <label>Текстовый комментарий
+                        <input type="text" placeholder="Главный персонаж этого произведения..." name="comment" value="<%= @params && @params[:comment] %>">
+                    </label>
+                </div>
                 <div class="large-12 cell">
                     <input type="submit" value="Добавить" class="button">
                 </div>

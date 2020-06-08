@@ -15,15 +15,15 @@ class TestApp < Roda
   end
 
   opts[:books] = BookList.new([
-    Book.new('Толстой', 'Идиот', '2020-06-17'),
-    Book.new('Данте', 'Божественная комедия', '2020-05-18'),
-    Book.new('Ницше', 'Заратустра', '2020-04-20'),
-    Book.new('Толстой', 'Идиот', '2018-06-17'),
-    Book.new('Данте', 'Божественная комедия', '2017-05-18'),
-    Book.new('Ницше', 'Заратустра', '2015-04-20'),
-    Book.new('Толстой', 'Идиот', '2020-06-17'),
-    Book.new('Данте', 'Божественная комедия', '2020-05-18'),
-    Book.new('Ницше', 'Заратустра', '2020-04-20'),
+    Book.new('Толстой', 'Идиот', '2020-06-17', '9', 'бумажный формат', '300', ''),
+    Book.new('Данте', 'Божественная комедия', '2020-05-18', '10', 'электронная книга', '300', ''),
+    Book.new('Ницше', 'Заратустра', '2020-04-20', '9', 'аудиокнига', '300', ''),
+    Book.new('Толстой', 'Идиот', '2018-06-17', '9', 'аудиокнига', '300', ''),
+    Book.new('Данте', 'Божественная комедия', '2017-05-18', '9', 'бумажный формат', '300', ''),
+    Book.new('Ницше', 'Заратустра', '2015-04-20', '10', 'электронная книга', '300', ''),
+    Book.new('Толстой', 'Идиот', '2020-06-17', '10', 'электронная книга', '300', ''),
+    Book.new('Данте', 'Божественная комедия', '2020-05-18', '9', 'аудиокнига', '300', ''),
+    Book.new('Ницше', 'Заратустра', '2020-04-20', '9', 'бумажный формат', '300', ''),
   ])
 
   route do |r|
@@ -61,9 +61,26 @@ class TestApp < Roda
         end
       end
 
+      r.on 'like' do
+        r.is do
+          @likes_bools = opts[:books].likes
+
+          view('like')
+        end
+      end
+
       r.on 'books' do
         r.is do
-          @sorted_books = opts[:books].sorted
+          # @sorted_books = opts[:books].sorted
+
+          @params = InputValidators.check_format(r.params['format'])
+          pp @params[:format]
+          @filtered_books = if @params[:format].empty?
+                              opts[:books].sorted
+                            else
+                              opts[:books].filter(@params[:format])
+                            end
+
           view('books')
         end
 
@@ -73,9 +90,11 @@ class TestApp < Roda
           end
 
           r.post do
-            @params = InputValidators.check_book(r.params['author'], r.params['name'], r.params['date'])
+            @params = InputValidators.check_book(r.params['author'], r.params['name'], r.params['date'],
+                                                 r.params['estimation'], r.params['format'], r.params['size'],
+                                                 r.params['comment'])
             if @params[:errors].empty?
-              opts[:books].add_book(Book.new(@params[:author], @params[:name], @params[:date]))
+              opts[:books].add_book(Book.new(@params[:author], @params[:name], @params[:date], @params[:estimation], @params[:format], @params[:size], @params[:comment]))
               r.redirect '/book/books'
             else
               view('new_test')

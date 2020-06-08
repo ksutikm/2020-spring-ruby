@@ -35,4 +35,18 @@ class BookList
     end
     h
   end
+
+  def filter(formatt)
+    @books.select do |book|
+      next if !formatt.empty? && !book.format.include?(formatt)
+      true
+    end
+  end
+
+  def likes
+    @books.select do |book|
+      next if book.estimation.to_i == 10
+      true
+    end
+  end
 end

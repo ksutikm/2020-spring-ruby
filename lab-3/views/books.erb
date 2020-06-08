@@ -3,6 +3,22 @@
         <h3>Список книг</h3>
     </div>
 
+    <div class="large-12 cell">
+        <form method="get">
+            <div class="grid-x grid-padding-x">
+
+                <div class="large-12 cell">
+                <label>Формат чтения
+                    <input type="text" placeholder="бумажный формат" name="format" value="<%= @params[:format] %>">
+                </label>
+                </div>
+                <div class="large-12 cell">
+                <input type="submit" value="Фильтровать" class="button">
+                </div>
+            </div>
+        </form>
+    </div>
+
 
     <div class="large-12 cell">
         <a href="books/new" class="button">Добавить запись</a>
@@ -15,13 +31,17 @@
             <tr>
                 <th>Дата прочтения</th>
                 <th>Автор «Название»</th>
+                <th>Оценка</th>
+                <th>Формат чтения</th>
             </tr>
             </thead>
             <tbody>
-            <% @sorted_books.each do |book| %>
+            <% @filtered_books.each do |book| %>
                 <tr>
                 <td><%= book.date %></td>
                 <td><%= book.author %> "<%= book.name %>"</td>
+                <td><%= book.estimation %></td>
+                <td><%= book.format %></td>
                 </tr>
             <% end %>
             </tbody>

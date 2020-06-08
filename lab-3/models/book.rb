@@ -2,12 +2,16 @@
 
 # Class Book
 class Book
-  attr_reader :author, :name, :date
+  attr_reader :author, :name, :date, :estimation, :format, :size, :comment
 
-  def initialize(author, name, date)
+  def initialize(author, name, date, estimation, formatt, size, comment)
     @author = author
     @name = name
     @date = date
+    @estimation = estimation
+    @format = formatt
+    @size = size
+    @comment = comment
   end
 
   def <=>(other)
