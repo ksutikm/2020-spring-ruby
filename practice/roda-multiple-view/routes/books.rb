@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Class
 class BookApplication
   path :books, '/cool_books'
   path :book_new, '/cool_books/new'
