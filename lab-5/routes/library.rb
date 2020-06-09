@@ -2,15 +2,10 @@
 
 # Class
 class LibraryApplication
-  # path :books, '/cool_books'
-  # path :book_new, '/cool_books/new'
-  # path Book do |book, action|
-  #   if action
-  #     "/cool_books/#{book.id}/#{action}"
-  #   else
-  #     "/cool_books/#{book.id}"
-  #   end
-  # end
+  path :library, '/library'
+  path :choice do |choice|
+    "/library/#{choice}"
+  end
 
   hash_branch('library') do |r|
     # append_view_subdir('books')
@@ -21,6 +16,12 @@ class LibraryApplication
       view('library')
     end
 
-    
+    r.on 'books' do
+      view('books')
+    end
+
+    r.on 'readers' do
+      view('readers')
+    end
   end
 end

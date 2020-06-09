@@ -36,7 +36,7 @@ class LibraryApplication < Roda
     r.hash_branches
 
     r.root do
-      r.redirect "/library"
+      r.redirect library_path
     end
   end
 end
