@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Class
-class BookApplication
+class LibraryApplication
   # path :books, '/cool_books'
   # path :book_new, '/cool_books/new'
   # path Book do |book, action|
@@ -12,13 +12,13 @@ class BookApplication
   #   end
   # end
 
-  hash_branch('books') do |r|
+  hash_branch('library') do |r|
     # append_view_subdir('books')
     # set_layout_options(template: '../views/layout')
 
     r.is do
       # @books = opts[:books].all_books
-      view('books')
+      view('library')
     end
 
     

@@ -7,7 +7,7 @@ require 'roda'
 require_relative 'models'
 
 # The application class
-class BookApplication < Roda
+class LibraryApplication < Roda
   opts[:root] = __dir__
   plugin :environments
   plugin :forme
@@ -29,14 +29,14 @@ class BookApplication < Roda
     view('not_found')
   end
 
-  require_relative 'routes/books.rb'
+  require_relative 'routes/library.rb'
 
   route do |r|
     r.public if opts[:serve_static]
     r.hash_branches
 
     r.root do
-      r.redirect "/books"
+      r.redirect "/library"
     end
   end
 end
