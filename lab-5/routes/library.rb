@@ -14,6 +14,7 @@ class LibraryApplication
       "/library/books/#{book.id}"
     end
   end
+  path :library_new, '/library/new'
 
   hash_branch('library') do |r|
     # append_view_subdir('books')
@@ -93,6 +94,14 @@ class LibraryApplication
 
     r.on 'readers' do
       view('readers')
+    end
+
+    r.on 'new' do
+      r.is do
+        @books = opts[:books].all_books
+        @readers = opts[:readers].all_readers
+        view('library_new')
+      end
     end
   end
 end

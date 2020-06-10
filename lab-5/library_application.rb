@@ -36,6 +36,7 @@ class LibraryApplication < Roda
                                 )
                               ])
   # opts[:books] = BookList.new
+  opts[:readers] = ReaderList.new
 
   status_handler(404) do
     view('not_found')
