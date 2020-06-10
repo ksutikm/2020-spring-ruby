@@ -22,19 +22,19 @@ class LibraryApplication < Roda
     opts[:serve_static] = true
   end
 
-#   opts[:store] = Store.new
+  #   opts[:store] = Store.new
   opts[:books] = BookList.new([
-    Book.new(
-      id: 1,
-      author: 'Фромм Э.',
-      title: 'Искусство любить',
-      inverted_number: 5,
-      genre: 'Книга по философии',
-      age_rating: '18',
-      number_in_library: 5,
-      number_on_hands: 2
-    )
-  ])
+                                Book.new(
+                                  id: 1,
+                                  author: 'Фромм Э.',
+                                  title: 'Искусство любить',
+                                  inverted_number: 5,
+                                  genre: 'Книга по философии',
+                                  age_rating: '18',
+                                  number_in_library: 5,
+                                  number_on_hands: 2
+                                )
+                              ])
   # opts[:books] = BookList.new
 
   status_handler(404) do

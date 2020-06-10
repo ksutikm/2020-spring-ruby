@@ -33,17 +33,17 @@ class LibraryApplication
       r.on Integer do |book_id|
         @book = opts[:books].book_by_id(book_id)
         next if @book.nil?
-  
+
         r.is do
           view('book')
         end
-  
+
         # r.on 'edit' do
         #   r.get do
         #     @parameters = @book.to_h
         #     view('book_edit')
         #   end
-  
+
         #   r.post do
         #     @parameters = DryResultFormeWrapper.new(BookFormSchema.call(r.params))
         #     if @parameters.success?
@@ -54,13 +54,13 @@ class LibraryApplication
         #     end
         #   end
         # end
-  
+
         # r.on 'delete' do
         #   r.get do
         #     @parameters = {}
         #     view('book_delete')
         #   end
-  
+
         #   r.post do
         #     @parameters = DryResultFormeWrapper.new(BookDeleteSchema.call(r.params))
         #     if @parameters.success?
@@ -78,7 +78,7 @@ class LibraryApplication
           @parameters = {}
           view('book_new')
         end
-  
+
         r.post do
           @parameters = DryResultFormeWrapper.new(BookFormSchema.call(r.params))
           if @parameters.success?
