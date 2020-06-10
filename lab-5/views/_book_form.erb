@@ -10,7 +10,7 @@
       <%= f.input(:inverted_number, type: :text, label: 'Инвентаризационный номер', placeholder: '1234') %>
     </div>
     <div class="large-12 cell">
-      <%= f.input(:genre, type: :text, label: 'Жанр', placeholder: 'книга по философии') %>
+      <%= f.input(:genre, type: :select, label: 'Жанр', options: BookGenreType.all_types, add_blank: true)%>
     </div>
     <div class="large-12 cell">
       <%= f.input(:age_rating, type: :radioset, label: 'Возрастной рейтинг', options: ['0+', '6+', '12+', '16+', '18+']) %>

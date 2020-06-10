@@ -30,7 +30,7 @@ class LibraryApplication < Roda
                                   title: 'Искусство любить',
                                   inverted_number: 5,
                                   genre: 'Книга по философии',
-                                  age_rating: '18',
+                                  age_rating: '18+',
                                   number_in_library: 5,
                                   number_on_hands: 2
                                 )
