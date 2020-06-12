@@ -1,0 +1,14 @@
+<div class="grid-x">
+  <div class="cell large-12">
+    <h3>Информация о читателе</h3>
+
+    <p>Фамилия: <%= @reader.last_name %></p>
+    <p>Имя: <%= @reader.name %></p>
+    <p>Отчество: <%= @reader.middle_name %></p>
+    <p>Дата рождения: <%= @reader.date_of_birth %></p>
+
+    <a class="button" href="<%= path(@reader, 'edit') %>">Редактировать</a>
+    <a class="button warning" href="<%= path(@reader, 'delete') %>">Удалить</a>
+    <a class="button secondary" href="<%= library_new_path %>">Назад к списку читателей</a>
+  </div>
+</div>

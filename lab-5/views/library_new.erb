@@ -14,7 +14,7 @@
     <div class="cell large-6">
         <h3>Список читателей</h3>
 
-        <a href="<%= book_new_path %>" class="button">
+        <a href="<%= reader_new_path %>" class="button">
             Добавить читателя
         </a>
     </div>
@@ -53,12 +53,11 @@
                 <% @readers.each do |reader| %>
                     <div class="card cell large-4">
                         <div class="card-divider">
-                            <%= reader.name %>
+                            <%= reader.last_name %> <%= reader.name %> <%= reader.middle_name %>
                         </div>
                         <div class="card-section">
-                            <p><%= reader.last_name %></p>
                             <p>
-                                <a class="button" href="<%= path(book) %>">Информация о читателе</a>
+                                <a class="button" href="<%= path(reader) %>">Информация о читателе</a>
                             <p>
                         </div>
                     </div>

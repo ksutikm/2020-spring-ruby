@@ -15,6 +15,14 @@ class LibraryApplication
     end
   end
   path :library_new, '/library/new'
+  path :reader_new, '/library/readers/new'
+  path Reader do |reader, action|
+    if action
+      "/library/readers/#{reader.id}/#{action}"
+    else
+      "/library/readers/#{reader.id}"
+    end
+  end
 
   hash_branch('library') do |r|
     # append_view_subdir('books')
@@ -93,7 +101,71 @@ class LibraryApplication
     end
 
     r.on 'readers' do
-      view('readers')
+      r.is do
+        @readers = opts[:readers].all_readers
+        view('readers')
+      end
+
+      r.on Integer do |reader_id|
+        @reader = opts[:readers].reader_by_id(reader_id)
+        next if @reader.nil?
+
+        r.is do
+          view('reader')
+        end
+
+        # r.on 'edit' do
+        #   r.get do
+        #     @parameters = @book.to_h
+        #     view('book_edit')
+        #   end
+
+        #   r.post do
+        #     @parameters = DryResultFormeWrapper.new(BookFormSchema.call(r.params))
+        #     if @parameters.success?
+        #       opts[:books].update_book(@book.id, @parameters)
+        #       r.redirect(path(@book))
+        #     else
+        #       view('book_edit')
+        #     end
+        #   end
+        # end
+
+        # r.on 'delete' do
+        #   r.get do
+        #     @parameters = {}
+        #     view('book_delete')
+        #   end
+
+        #   r.post do
+        #     @parameters = DryResultFormeWrapper.new(BookDeleteSchema.call(r.params))
+        #     if @parameters.success?
+        #       opts[:books].delete_book(@book.id)
+        #       r.redirect(choice_path('books'))
+        #     else
+        #       view('book_delete')
+        #     end
+        #   end
+        # end
+      end
+
+
+      r.on 'new' do
+        r.get do
+          @parameters = {}
+          view('reader_new')
+        end
+
+        r.post do
+          @parameters = DryResultFormeWrapper.new(ReaderFormSchema.call(r.params))
+          if @parameters.success?
+            reader = opts[:readers].add_reader(@parameters)
+            r.redirect(path(reader))
+          else
+            view('reader_new')
+          end
+        end
+      end
     end
 
     r.on 'new' do

@@ -1,0 +1,20 @@
+<% form({ method: :post }, { obj: @parameters }) do |f| %>
+  <div class="grid-x grid-margin-x">
+    <div class="large-12 cell">
+      <%= f.input(:last_name, type: :text, label: 'Фамилия', placeholder: 'Иванов') %>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:name, type: :text, label: 'Имя', placeholder: 'Иван') %>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:middle_name, type: :text, label: 'Отчество', placeholder: 'Иванович') %>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:date_of_birth, type: :date, label: 'Дата рождения', placeholder: '2000-01-01') %>
+    </div>
+    <div class="large-12 cell">
+      <%= f.button(value: form_type, class: 'button') %>
+      <a href="<%= library_new_path %>" class="button secondary">Отмена</a>
+    </div>
+  </div>
+<% end %>
