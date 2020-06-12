@@ -1,0 +1,8 @@
+---
+:reader_list:
+- :id: 1
+  :last_name: Иванов
+  :name: Иван
+  :middle_name: Иванович
+  :date_of_birth: 2000-06-12
+  :list_of_book_on_hands: {}

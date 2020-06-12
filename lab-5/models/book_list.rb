@@ -32,7 +32,7 @@ class BookList
       genre: parameters[:genre],
       age_rating: parameters[:age_rating],
       number_in_library: parameters[:number_in_library],
-      number_on_hands: parameters[:number_on_hands]
+      number_on_hands: 0
     )
     @books[book_id] = book
     book
@@ -50,7 +50,6 @@ class BookList
     book.genre = parameters[:genre]
     book.age_rating = parameters[:age_rating]
     book.number_in_library = parameters[:number_in_library]
-    book.number_on_hands = parameters[:number_on_hands]
   end
 
   def delete_book(book_id)

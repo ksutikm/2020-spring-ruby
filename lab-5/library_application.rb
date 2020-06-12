@@ -23,20 +23,23 @@ class LibraryApplication < Roda
   end
 
   #   opts[:store] = Store.new
-  opts[:books] = BookList.new([
-                                Book.new(
-                                  id: 1,
-                                  author: 'Фромм Э.',
-                                  title: 'Искусство любить',
-                                  inverted_number: 5,
-                                  genre: 'Книга по философии',
-                                  age_rating: '18+',
-                                  number_in_library: 5,
-                                  number_on_hands: 2
-                                )
-                              ])
+  # opts[:books] = BookList.new([
+  #                               Book.new(
+  #                                 id: 1,
+  #                                 author: 'Фромм Э.',
+  #                                 title: 'Искусство любить',
+  #                                 inverted_number: 5,
+  #                                 genre: BookGenreType::SCIENTIFIC_AND_EDUCATIONAL,
+  #                                 age_rating: '18+',
+  #                                 number_in_library: 5,
+  #                                 number_on_hands: 0
+  #                               )
+  #                             ])
   # opts[:books] = BookList.new
-  opts[:readers] = ReaderList.new
+  # opts[:readers] = ReaderList.new
+  opts[:store] = Store.new
+  opts[:books] = opts[:store].book_list
+  opts[:readers] = opts[:store].reader_list
 
   status_handler(404) do
     view('not_found')

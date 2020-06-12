@@ -11,5 +11,4 @@ BookFormSchema = Dry::Schema.Params do
   required(:genre).filled(SchemaTypes::StrippedString)
   required(:age_rating).filled(:string)
   required(:number_in_library).filled(:integer, gt?: 0)
-  required(:number_on_hands).filled(:integer)
 end

@@ -18,6 +18,10 @@ class ReaderList
     @readers[id]
   end
 
+  def add_real_reader(reader)
+    @readers[reader.id] = reader
+  end
+
   def add_reader(parameters)
     reader_id = if @readers.empty?
                   1

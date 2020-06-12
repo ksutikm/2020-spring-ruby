@@ -1,0 +1,10 @@
+---
+:book_list:
+- :id: 1
+  :author: Эрих Фромм
+  :title: Искусство любить
+  :inverted_number: 1234
+  :genre: Научно-образовательная литература
+  :age_rating: 18+
+  :number_in_library: 10
+  :number_on_hands: 0
