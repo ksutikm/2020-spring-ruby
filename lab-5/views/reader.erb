@@ -6,6 +6,7 @@
     <p>Имя: <%= @reader.name %></p>
     <p>Отчество: <%= @reader.middle_name %></p>
     <p>Дата рождения: <%= @reader.date_of_birth %></p>
+    <p>Возраст: <%= @reader.age %></p>
 
     <a class="button" href="<%= path(@reader, 'edit') %>">Редактировать</a>
     <a class="button warning" href="<%= path(@reader, 'delete') %>">Удалить</a>

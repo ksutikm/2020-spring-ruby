@@ -24,6 +24,12 @@ class BookList
               else
                 @books.keys.max + 1
               end
+    book = new_book(parameters, book_id)
+    @books[book_id] = book
+    book
+  end
+
+  def new_book(parameters, book_id)
     book = Book.new(
       id: book_id,
       author: parameters[:author],
@@ -34,7 +40,6 @@ class BookList
       number_in_library: parameters[:number_in_library],
       number_on_hands: 0
     )
-    @books[book_id] = book
     book
   end
 

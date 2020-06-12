@@ -149,7 +149,6 @@ class LibraryApplication
         # end
       end
 
-
       r.on 'new' do
         r.get do
           @parameters = {}

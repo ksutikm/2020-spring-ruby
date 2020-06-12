@@ -8,3 +8,11 @@
   :age_rating: 18+
   :number_in_library: 10
   :number_on_hands: 0
+- :id: 2
+  :author: Достоевский Ф.М.
+  :title: Идиот
+  :inverted_number: 123
+  :genre: Научно-образовательная литература
+  :age_rating: 18+
+  :number_in_library: 6
+  :number_on_hands: 0

@@ -10,7 +10,6 @@
     <p>Количество книг в библиотеке: <%= @book.number_in_library %></p>
     <p>Количество книг на руках: <%= @book.number_on_hands %></p>
 
-    <a class="button" href="<%= path(@book, 'edit') %>">Редактировать</a>
     <a class="button warning" href="<%= path(@book, 'delete') %>">Удалить</a>
     <a class="button secondary" href="<%= library_new_path %>">Назад к списку книг</a>
   </div>
