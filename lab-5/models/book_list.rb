@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'book'
+require_relative 'give_book_list'
 
 # The class that contains all our book
 class BookList
@@ -57,8 +58,21 @@ class BookList
     book.number_in_library = parameters[:number_in_library]
   end
 
-  def delete_book(book_id)
+  def delete_book(book_id, readers)
+    reader = readers.all_readers
+    new_hash = {}
+    reader.each do |read|
+      new_hash = GiveBookList.delete_books_in_reader(
+        read.list_of_book_on_hands, book_id)
+      
+      read.list_of_book_on_hands = new_hash
+    end
+    new_readers = {}
+    reader.each do |new_reader|
+      new_readers[new_reader.id] = new_reader
+    end
     @books.delete(book_id)
+    new_readers
   end
 
   def change_book(book_id)

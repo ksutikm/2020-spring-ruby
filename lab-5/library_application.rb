@@ -31,6 +31,7 @@ class LibraryApplication < Roda
   end
 
   require_relative 'routes/branch_books.rb'
+  require_relative 'routes/branch_delete_book.rb'
   require_relative 'routes/branch_delete_reader.rb'
   require_relative 'routes/branch_readers.rb'
   require_relative 'routes/library.rb'

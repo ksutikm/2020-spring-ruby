@@ -6,7 +6,7 @@
   :inverted_number: 1234
   :genre: Научно-образовательная литература
   :age_rating: 18+
-  :number_in_library: 8
+  :number_in_library: 11
   :number_on_hands: 0
 - :id: 2
   :author: Достоевский Ф.М.
@@ -14,7 +14,7 @@
   :inverted_number: 123
   :genre: Научно-образовательная литература
   :age_rating: 18+
-  :number_in_library: 9
+  :number_in_library: 7
   :number_on_hands: 0
 - :id: 3
   :author: Достоевский Ф.М.
@@ -30,5 +30,5 @@
   :inverted_number: 7894
   :genre: Старинная литература
   :age_rating: 12+
-  :number_in_library: 19
+  :number_in_library: 21
   :number_on_hands: 0

@@ -35,7 +35,6 @@ module GiveBookList
     else
       book_list[date] = [book_id]
     end
-    pp book_list
     book_list
   end
 
@@ -49,5 +48,18 @@ module GiveBookList
       end
     end
     new_hash
+  end
+
+  def self.delete_books_in_reader(reader, book_id)
+    new_hash = {}
+    hash = {}
+    reader.each do |key, value|
+      new_hash[key] = []
+      value.each do |id|
+        new_hash[key].append(id) if book_id != id
+      end
+      hash[key] = new_hash[key] if new_hash[key] != []
+    end
+    hash
   end
 end
