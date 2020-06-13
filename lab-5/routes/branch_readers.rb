@@ -12,12 +12,11 @@ class LibraryApplication
       @reader = opts[:readers].reader_by_id(reader_id)
       @reader_list_books = GiveBookList.reader_book_list(opts[:books],
                                                          @reader.list_of_book_on_hands)
-      pp @reader_list_books
       next if @reader.nil?
 
       r.is do
         @full_books = opts[:books]
-        view('reader')
+        view('give_readers')
       end
 
       r.on 'give_book' do
@@ -48,22 +47,22 @@ class LibraryApplication
         end
       end
 
-      # r.on 'delete' do
-      #   r.get do
-      #     @parameters = {}
-      #     view('book_delete')
-      #   end
+      r.on 'delete' do
+        r.get do
+          @parameters = {}
+          view('reader_delete')
+        end
 
-      #   r.post do
-      #     @parameters = DryResultFormeWrapper.new(BookDeleteSchema.call(r.params))
-      #     if @parameters.success?
-      #       opts[:books].delete_book(@book.id)
-      #       r.redirect(choice_path('books'))
-      #     else
-      #       view('book_delete')
-      #     end
-      #   end
-      # end
+        r.post do
+          @parameters = DryResultFormeWrapper.new(BookDeleteSchema.call(r.params))
+          if @parameters.success?
+            opts[:books] = opts[:readers].delete_reader(@reader.id, opts[:books])
+            r.redirect(choice_path('readers'))
+          else
+            view('reader_delete')
+          end
+        end
+      end
     end
 
     r.on 'new' do

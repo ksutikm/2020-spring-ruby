@@ -1,0 +1,38 @@
+<div class="grid-x grid-margin-x">
+  <div class="cell large-12">
+
+    <a class="button" href="<%= path(@reader, 'give_book') %>">Выбрать книгу</a>
+    <a class="button warning" href="<%= path(@reader, 'delete') %>">Удалить</a>
+    <a class="button secondary" href="<%= back_location %>">Назад к списку читателей</a>
+
+    <h3>Информация о читателе</h3>
+
+    <p>Фамилия: <%= @reader.last_name %></p>
+    <p>Имя: <%= @reader.name %></p>
+    <p>Отчество: <%= @reader.middle_name %></p>
+    <p>Дата рождения: <%= @reader.date_of_birth %></p>
+    <p>Возраст: <%= @reader.age %></p>
+    <h5>Список взятых книг:</h5>
+  </div>
+  
+  <% if @reader_list_books.empty? %>
+    <div class="cell large-12 callout warning">
+      У читателя нет взятых книг
+    </div>
+  <% else %>
+    <% @reader_list_books.each do |key, value| %>
+      <div class="card cell large-4">
+        <div class="card-divider">
+          Дата возврата: <%= key %>
+        </div>
+        <div class="card-section">
+          <ul>
+            <% value.each do |book| %>
+              <li><%= book %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -6,15 +6,15 @@
   :inverted_number: 1234
   :genre: Научно-образовательная литература
   :age_rating: 18+
-  :number_in_library: 9
-  :number_on_hands: 1
+  :number_in_library: 8
+  :number_on_hands: 0
 - :id: 2
   :author: Достоевский Ф.М.
   :title: Идиот
   :inverted_number: 123
   :genre: Научно-образовательная литература
   :age_rating: 18+
-  :number_in_library: 10
+  :number_in_library: 9
   :number_on_hands: 0
 - :id: 3
   :author: Достоевский Ф.М.
@@ -23,4 +23,12 @@
   :genre: Классика
   :age_rating: 18+
   :number_in_library: 10
+  :number_on_hands: 0
+- :id: 4
+  :author: Данте Алигьери
+  :title: Божественная комедия
+  :inverted_number: 7894
+  :genre: Старинная литература
+  :age_rating: 12+
+  :number_in_library: 19
   :number_on_hands: 0

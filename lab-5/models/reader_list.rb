@@ -58,4 +58,15 @@ class ReaderList
     )
     reader
   end
+
+  def delete_reader(reader_id, books)
+    reader = @readers[reader_id].list_of_book_on_hands
+    reader.each do |_key, value|
+      value.each do |book_id|
+        books.book_by_id(book_id).number_on_hands = books.book_by_id(book_id).number_on_hands - 1
+      end
+    end
+    @readers.delete(reader_id)
+    books
+  end
 end
