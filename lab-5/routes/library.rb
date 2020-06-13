@@ -3,176 +3,34 @@
 # Class
 class LibraryApplication
   path :library, '/library'
-  path :book_new, '/library/books/new'
+  path :book_new, '/books/new'
   path :choice do |choice|
-    "/library/#{choice}"
+    "/#{choice}"
   end
   path Book do |book, action|
     if action
-      "/library/books/#{book.id}/#{action}"
+      "/books/#{book.id}/#{action}"
     else
-      "/library/books/#{book.id}"
+      "/books/#{book.id}"
     end
   end
-  path :library_new, '/library/new'
-  path :reader_new, '/library/readers/new'
+  path :library_new, '/library/add'
+  path :reader_new, '/readers/new'
   path Reader do |reader, action|
     if action
-      "/library/readers/#{reader.id}/#{action}"
+      "/readers/#{reader.id}/#{action}"
     else
-      "/library/readers/#{reader.id}"
+      "/readers/#{reader.id}"
     end
   end
+  path :library_give, '/give'
 
-  hash_branch('library') do |r|
+  hash_path('/library') do |r|
     # append_view_subdir('books')
     # set_layout_options(template: '../views/layout')
 
     r.is do
-      # @books = opts[:books].all_books
       view('library')
-    end
-
-    r.on 'books' do
-      r.is do
-        @books = opts[:books].all_books
-        view('books')
-      end
-
-      r.on Integer do |book_id|
-        @book = opts[:books].book_by_id(book_id)
-        next if @book.nil?
-
-        r.is do
-          view('book')
-        end
-
-        r.on 'edit' do
-          r.get do
-            @parameters = @book.to_h
-            view('book_edit')
-          end
-
-          r.post do
-            @parameters = DryResultFormeWrapper.new(BookFormSchema.call(r.params))
-            if @parameters.success?
-              opts[:books].update_book(@book.id, @parameters)
-              r.redirect(path(@book))
-            else
-              view('book_edit')
-            end
-          end
-        end
-
-        r.on 'delete' do
-          r.get do
-            @parameters = {}
-            view('book_delete')
-          end
-
-          r.post do
-            @parameters = DryResultFormeWrapper.new(BookDeleteSchema.call(r.params))
-            if @parameters.success?
-              opts[:books].delete_book(@book.id)
-              r.redirect(choice_path('books'))
-            else
-              view('book_delete')
-            end
-          end
-        end
-      end
-
-      r.on 'new' do
-        r.get do
-          @parameters = {}
-          view('book_new')
-        end
-
-        r.post do
-          @parameters = DryResultFormeWrapper.new(BookFormSchema.call(r.params))
-          if @parameters.success?
-            book = opts[:books].add_book(@parameters)
-            r.redirect(path(book))
-          else
-            view('book_new')
-          end
-        end
-      end
-    end
-
-    r.on 'readers' do
-      r.is do
-        @readers = opts[:readers].all_readers
-        view('readers')
-      end
-
-      r.on Integer do |reader_id|
-        @reader = opts[:readers].reader_by_id(reader_id)
-        next if @reader.nil?
-
-        r.is do
-          view('reader')
-        end
-
-        # r.on 'edit' do
-        #   r.get do
-        #     @parameters = @book.to_h
-        #     view('book_edit')
-        #   end
-
-        #   r.post do
-        #     @parameters = DryResultFormeWrapper.new(BookFormSchema.call(r.params))
-        #     if @parameters.success?
-        #       opts[:books].update_book(@book.id, @parameters)
-        #       r.redirect(path(@book))
-        #     else
-        #       view('book_edit')
-        #     end
-        #   end
-        # end
-
-        # r.on 'delete' do
-        #   r.get do
-        #     @parameters = {}
-        #     view('book_delete')
-        #   end
-
-        #   r.post do
-        #     @parameters = DryResultFormeWrapper.new(BookDeleteSchema.call(r.params))
-        #     if @parameters.success?
-        #       opts[:books].delete_book(@book.id)
-        #       r.redirect(choice_path('books'))
-        #     else
-        #       view('book_delete')
-        #     end
-        #   end
-        # end
-      end
-
-      r.on 'new' do
-        r.get do
-          @parameters = {}
-          view('reader_new')
-        end
-
-        r.post do
-          @parameters = DryResultFormeWrapper.new(ReaderFormSchema.call(r.params))
-          if @parameters.success?
-            reader = opts[:readers].add_reader(@parameters)
-            r.redirect(path(reader))
-          else
-            view('reader_new')
-          end
-        end
-      end
-    end
-
-    r.on 'new' do
-      r.is do
-        @books = opts[:books].all_books
-        @readers = opts[:readers].all_readers
-        view('library_new')
-      end
     end
   end
 end

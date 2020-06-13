@@ -6,13 +6,21 @@
   :inverted_number: 1234
   :genre: Научно-образовательная литература
   :age_rating: 18+
-  :number_in_library: 10
-  :number_on_hands: 0
+  :number_in_library: 9
+  :number_on_hands: 1
 - :id: 2
   :author: Достоевский Ф.М.
   :title: Идиот
   :inverted_number: 123
   :genre: Научно-образовательная литература
   :age_rating: 18+
-  :number_in_library: 6
+  :number_in_library: 10
+  :number_on_hands: 0
+- :id: 3
+  :author: Достоевский Ф.М.
+  :title: Искусство любить
+  :inverted_number: 12345
+  :genre: Классика
+  :age_rating: 18+
+  :number_in_library: 10
   :number_on_hands: 0

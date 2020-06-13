@@ -9,5 +9,6 @@ Style/NegatedIf:      # Не форсировать unless
 Metrics/BlockLength:
   ExcludedMethods:
     - 'route'
+    - 'hash_path'
     - 'hash_branch'
     - 'on'

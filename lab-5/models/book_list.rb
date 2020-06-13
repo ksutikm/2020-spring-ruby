@@ -60,4 +60,11 @@ class BookList
   def delete_book(book_id)
     @books.delete(book_id)
   end
+
+  def change_book(book_id)
+    book = @books[book_id]
+    book.number_in_library = book.number_in_library - 1
+    book.number_on_hands = book.number_on_hands + 1
+    @books[book_id] = book
+  end
 end

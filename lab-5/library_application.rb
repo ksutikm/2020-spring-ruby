@@ -30,11 +30,15 @@ class LibraryApplication < Roda
     view('not_found')
   end
 
+  require_relative 'routes/branch_books.rb'
+  require_relative 'routes/branch_readers.rb'
   require_relative 'routes/library.rb'
+  require_relative 'routes/library_add.rb'
+  require_relative 'routes/library_give_book.rb'
 
   route do |r|
     r.public if opts[:serve_static]
-    r.hash_branches
+    r.hash_routes
 
     r.root do
       r.redirect library_path

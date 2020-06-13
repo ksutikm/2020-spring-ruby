@@ -5,7 +5,12 @@
   :name: Иван
   :middle_name: Иванович
   :date_of_birth: 2000-06-12
-  :list_of_book_on_hands: {}
+  :list_of_book_on_hands:
+    :2020-06-15:
+    - 1
+    - 1
+    - 1
+    - 3
   :age: 20
 - :id: 2
   :last_name: Петров
@@ -21,3 +26,15 @@
   :date_of_birth: 2020-06-10
   :list_of_book_on_hands: {}
   :age: 0
+- :id: 4
+  :last_name: Сидоров
+  :name: Сидр
+  :middle_name: Сидрович
+  :date_of_birth: 1978-06-23
+  :list_of_book_on_hands:
+    :2020-06-15:
+    - 3
+    - 3
+    :2020-06-18:
+    - 1
+  :age: 41

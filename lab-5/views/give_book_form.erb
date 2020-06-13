@@ -1,0 +1,29 @@
+<div class="grid-x grid-margin-x">
+  <h3>Выдача книги</h3>
+</div>
+
+<% if @params && !@params[:errors].empty? %>
+  <div class="large-12 cell callout warning">
+    <p>При заполнении формы возникли ошибки</p>
+    <ul>
+      <% @params[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% form({ method: :post }, { obj: @parameters }) do |f| %>
+  <div class="grid-x grid-margin-x">
+    <div class="large-12 cell">
+      <%= f.input(:is_book_new, type: :select, label: 'Список книг', options:  @give_books, add_blank: true)%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:date_to_given_book, type: :date, label: 'Дата выдачи книги', placeholder: '2020-06-22') %>
+    </div>
+    <div class="large-12 cell">
+      <%= f.button(value: 'Выдать', class: 'button') %>
+      <a href="<%= path(@reader) %>" class="button secondary">Отмена</a>
+    </div>
+  </div>
+<% end %>
