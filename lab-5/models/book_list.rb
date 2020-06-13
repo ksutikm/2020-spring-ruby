@@ -63,8 +63,9 @@ class BookList
     new_hash = {}
     reader.each do |read|
       new_hash = GiveBookList.delete_books_in_reader(
-        read.list_of_book_on_hands, book_id)
-      
+        read.list_of_book_on_hands, book_id
+      )
+
       read.list_of_book_on_hands = new_hash
     end
     new_readers = {}
