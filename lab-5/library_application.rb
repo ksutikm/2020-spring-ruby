@@ -37,6 +37,7 @@ class LibraryApplication < Roda
   require_relative 'routes/library.rb'
   require_relative 'routes/library_add.rb'
   require_relative 'routes/library_give_book.rb'
+  require_relative 'routes/select_book.rb'
 
   route do |r|
     r.public if opts[:serve_static]

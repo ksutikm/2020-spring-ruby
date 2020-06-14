@@ -63,6 +63,26 @@ class LibraryApplication
           end
         end
       end
+
+      r.on 'select_book' do
+        @parameters = DryResultFormeWrapper.new(SelectBookFormSchema.call(r.params))
+        @filtered_books = if @parameters.success?
+                            GiveBookList.fil(@parameters, opts[:books].all_books, @reader.age)
+                          else
+                            opts[:books].all_books
+                          end
+        @count = GiveBookList.change_age(opts[:books].all_books, @reader.age)
+        pp @count
+        r.get do
+          @parameters = {}
+          view('select_book')
+        end
+
+        r.post do
+          @books = opts[:books].all_books
+          view('select_book')
+        end
+      end
     end
 
     r.on 'new' do

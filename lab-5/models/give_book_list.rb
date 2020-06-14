@@ -62,4 +62,27 @@ module GiveBookList
     end
     hash
   end
+
+  def self.fil(params, books, age)
+    books.select do |book|
+      if book.age_rating.to_i < age && params[:genre] &&
+         !params[:genre].empty? && params[:genre] != book.genre
+        next
+      end
+      if book.age_rating.to_i < age && params[:author] &&
+         !params[:author].empty? && !book.author.include?(params[:author])
+        next
+      end
+
+      true
+    end
+  end
+
+  def self.change_age(books, age)
+    count = 0
+    books.each do |book|
+      count += 1 if book.age_rating.to_i <= age
+    end
+    count
+  end
 end

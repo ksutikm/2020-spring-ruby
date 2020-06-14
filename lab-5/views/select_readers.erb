@@ -1,0 +1,28 @@
+<div class="grid-x grid-margin-x">
+  <div class="cell large-12">
+    <h3>Выберите читателя</h3>
+
+    <a href="<%= library_path %>" class="button secondary">
+      Назад в главное меню
+    </a>
+  </div>
+
+  <% if @readers.size == 0 %>
+    <div class="cell large-12 callout warning">
+      В приложении нет информации о читателях
+    </div>
+  <% else%>
+    <% @readers.each do |reader| %>
+      <div class="card cell large-4">
+        <div class="card-divider">
+          <%= reader.last_name %> <%= reader.name %> <%= reader.middle_name %>
+        </div>
+        <div class="card-section">
+          <p>
+            <a class="button" href="<%= path(reader) %>">Подобрать книгу</a>
+          <p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

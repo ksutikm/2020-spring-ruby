@@ -27,6 +27,7 @@ class LibraryApplication
   path :delete do |delete|
     "/delete_#{delete}"
   end
+  path :select_book, '/select_book'
 
   hash_path('/library') do |r|
     # append_view_subdir('books')

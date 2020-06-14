@@ -1,16 +1,1 @@
-<div class="grid-x">
-  <div class="cell large-12">
-    <h3>Информация о книге</h3>
-
-    <p>Автор: <%= @book.author %></p>
-    <p>Название: <%= @book.title %></p>
-    <p>Инвентаризационный номер: <%= @book.inverted_number %></p>
-    <p>Жанр: <%= @book.genre %></p>
-    <p>Возрастной рейтинг: <%= @book.age_rating %></p>
-    <p>Количество книг в библиотеке: <%= @book.number_in_library %></p>
-    <p>Количество книг на руках: <%= @book.number_on_hands %></p>
-
-    <a class="button warning" href="<%= path(@book, 'delete') %>">Удалить</a>
-    <a class="button secondary" href="<%= library_new_path %>">Назад к списку книг</a>
-  </div>
-</div>
+<%= render('_book', locals: { back_location: library_new_path }) %>
