@@ -37,7 +37,7 @@ class TestApp < Roda
                             opts[:tests].filter(@params[:date], @params[:description])
                           else
                             opts[:tests].all_tests
-                            end
+                          end
 
         view('tests')
       end
