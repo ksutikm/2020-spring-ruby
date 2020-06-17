@@ -42,7 +42,7 @@ class LibraryApplication
         r.post do
           @parameters = DryResultFormeWrapper.new(BookDeleteSchema.call(r.params))
           if @parameters.success?
-            opts[:readers] = opts[:books].delete_book(@book.id, opts[:readers])
+            opts[:readers] = opts[:books].delete_book(@book.id, opts[:readers].all_readers)
             r.redirect(choice_path('books'))
           else
             view('book_delete')

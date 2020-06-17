@@ -65,20 +65,15 @@ module GiveBookList
 
   def self.filter(params, books, age)
     books.select do |book|
-      if helper(book, age, params[:genre]) && !params[:genre].empty? && params[:genre] != book.genre
-        next
-      end
-      if helper(book, age, params[:author]) && !params[:author].empty? &&
-         !book.author.include?(params[:author])
-        next
-      end
+      next if helper(book, age, params[:genre]) && params[:genre] != book.genre
+      next if helper(book, age, params[:author]) && !book.author.include?(params[:author])
 
       true
     end
   end
 
   def self.helper(book, age, param)
-    book.age_rating.to_i < age && param
+    book.age_rating.to_i < age && param && !param.empty?
   end
 
   def self.change_age(books, age)

@@ -14,29 +14,29 @@
   :inverted_number: 789
   :genre: Классика
   :age_rating: 12+
-  :number_in_library: 1
-  :number_on_hands: 1
+  :number_in_library: 2
+  :number_on_hands: 0
 - :id: 2
   :author: Достоевский Ф.М.
   :title: Идиот
   :inverted_number: 123
   :genre: Научно-образовательная литература
   :age_rating: 18+
-  :number_in_library: 6
-  :number_on_hands: 1
-- :id: 3
-  :author: Достоевский Ф.М.
-  :title: Искусство любить
-  :inverted_number: 12345
-  :genre: Классика
-  :age_rating: 18+
-  :number_in_library: 9
-  :number_on_hands: 1
+  :number_in_library: 7
+  :number_on_hands: 0
 - :id: 4
   :author: Данте Алигьери
   :title: Божественная комедия
   :inverted_number: 7894
   :genre: Старинная литература
   :age_rating: 12+
-  :number_in_library: 19
-  :number_on_hands: 2
+  :number_in_library: 21
+  :number_on_hands: 0
+- :id: 6
+  :author: Достоевский Ф.М.
+  :title: Преступление или наказание
+  :inverted_number: 7
+  :genre: Классика
+  :age_rating: 16+
+  :number_in_library: 5
+  :number_on_hands: 0

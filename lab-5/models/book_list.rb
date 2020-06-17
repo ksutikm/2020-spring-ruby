@@ -59,7 +59,7 @@ class BookList
   end
 
   def delete_book(book_id, readers)
-    reader = readers.all_readers
+    reader = readers
     new_hash = {}
     reader.each do |read|
       new_hash = GiveBookList.delete_books_in_reader(

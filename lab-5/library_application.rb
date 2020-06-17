@@ -36,7 +36,6 @@ class LibraryApplication < Roda
   require_relative 'routes/branch_readers'
   require_relative 'routes/delinquency_books'
   require_relative 'routes/library'
-  require_relative 'routes/library_add'
   require_relative 'routes/library_give_book'
   require_relative 'routes/reader_new'
   require_relative 'routes/return_book'

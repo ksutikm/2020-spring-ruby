@@ -26,6 +26,11 @@
       <div class="large-12 cell">
         <p>Книга: <%= @book_return.book.author %> "<%= @book_return.book.title %>"</p>
         <p>Срок сдачи: <%= @book_return.date %></p>
+      </div>
+      <div class="large-12 cell">
+        <%= f.input(:date, type: :date, label: 'Введите дату', placeholder: '2000-06-22') %>
+      </div>
+      <div class="large-12 cell">
         <%= f.button(value: 'Сдать книгу', class: 'button') %>
         <a href="<%= path(@reader) %>" class="button secondary">Отмена</a>
       </div>

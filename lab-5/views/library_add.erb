@@ -1,68 +1,68 @@
 <div class="grid-x grid-margin-x">
-    <div class="cell large-12">
-        <a href="<%= library_path %>" class="button secondary">
-            Назад в главное меню
-        </a>
-    </div>
-    <div class="cell large-6">
-        <h3>Список книг</h3>
-        <a href="<%= book_new_path %>" class="button">
-        Добавить книгу
-        </a>
-    </div>
+  <div class="cell large-12">
+    <a href="<%= library_path %>" class="button secondary">
+      Назад в главное меню
+    </a>
+  </div>
+  <div class="cell large-6">
+    <h3>Список книг</h3>
+    <a href="<%= book_new_path %>" class="button">
+      Добавить книгу
+    </a>
+  </div>
 
-    <div class="cell large-6">
-        <h3>Список читателей</h3>
+  <div class="cell large-6">
+    <h3>Список читателей</h3>
 
-        <a href="<%= reader_new_path %>" class="button">
-            Добавить читателя
-        </a>
-    </div>
+    <a href="<%= reader_new_path %>" class="button">
+      Добавить читателя
+    </a>
+  </div>
 
-    <div class="cell large-6">
-        <% if @books.size == 0 %>
-            <div class="cell large-6 callout warning">
-                В приложении нет информации о книгах
-        </div>
-        <% else%>
-        <div class="call large-6 callout grid-margin-x">
-            <% @books.each do |book| %>
-                <div class="card cell large-4">
-                    <div class="card-divider">
-                        <%= book.title %>
-                    </div>
-                    <div class="card-section">
-                        <p><%= book.author %></p>
-                        <p>
-                            <a class="button" href="<%= path(book) %>">Информация о книге</a>
-                        <p>
-                    </div>
-                </div>
-            <% end %>
-        </div>
-        <% end %>
-    </div>
-
-    <div class="cell large-6">
-        <% if @readers.size == 0 %>
-            <div class="cell large-6 callout warning">
-                В приложении нет информации о читателях
+  <div class="cell large-6">
+    <% if @books.size == 0 %>
+      <div class="cell large-6 callout warning">
+        В приложении нет информации о книгах
+      </div>
+    <% else%>
+      <div class="call large-6 callout grid-margin-x">
+        <% @books.each do |book| %>
+          <div class="card cell large-4">
+            <div class="card-divider">
+              <%= book.title %>
             </div>
-        <% else%>
-            <div class="call large-6 callout grid-margin-x">
-                <% @readers.each do |reader| %>
-                    <div class="card cell large-4">
-                        <div class="card-divider">
-                            <%= reader.last_name %> <%= reader.name %> <%= reader.middle_name %>
-                        </div>
-                        <div class="card-section">
-                            <p>
-                                <a class="button" href="<%= path(reader) %>">Информация о читателе</a>
-                            <p>
-                        </div>
-                    </div>
-                <% end %>
+            <div class="card-section">
+              <p><%= book.author %></p>
+              <p>
+                <a class="button" href="<%= path(book) %>">Информация о книге</a>
+              <p>
             </div>
+          </div>
         <% end %>
-    </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="cell large-6">
+    <% if @readers.size == 0 %>
+      <div class="cell large-6 callout warning">
+        В приложении нет информации о читателях
+      </div>
+    <% else%>
+      <div class="call large-6 callout grid-margin-x">
+        <% @readers.each do |reader| %>
+          <div class="card cell large-4">
+            <div class="card-divider">
+              <%= reader.last_name %> <%= reader.name %> <%= reader.middle_name %>
+            </div>
+            <div class="card-section">
+              <p>
+                <a class="button" href="<%= path(reader) %>">Информация о читателе</a>
+              <p>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
