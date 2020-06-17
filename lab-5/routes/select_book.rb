@@ -3,8 +3,8 @@
 # Class
 class LibraryApplication
   hash_branch('select_book') do |r|
+    @readers = opts[:readers].all_readers
     r.is do
-      @readers = opts[:readers].all_readers
       view('readers')
     end
   end
