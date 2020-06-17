@@ -28,3 +28,10 @@
   :date_of_birth: 1978-06-23
   :list_of_book_on_hands: {}
   :age: 41
+- :id: 5
+  :last_name: Смирнов
+  :name: Иван
+  :middle_name: Петрович
+  :date_of_birth: 2020-06-12
+  :list_of_book_on_hands: {}
+  :age: 0

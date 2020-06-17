@@ -78,8 +78,15 @@ class BookList
 
   def change_book(book_id)
     book = @books[book_id]
-    book.number_in_library = book.number_in_library - 1
-    book.number_on_hands = book.number_on_hands + 1
+    book.number_in_library -= 1
+    book.number_on_hands += 1
     @books[book_id] = book
+  end
+
+  def change_count_books(id)
+    book = @books[id]
+    book.number_in_library += 1
+    book.number_on_hands -= 1
+    @books[id] = book
   end
 end

@@ -16,22 +16,21 @@
     <h5>Список взятых книг:</h5>
   </div>
   
-  <% if @reader_list_books.empty? %>
+  <% if @reader_list_books == [] %>
     <div class="cell large-12 callout warning">
       У читателя нет взятых книг
     </div>
   <% else %>
-    <% @reader_list_books.each do |key, value| %>
+    <% @reader_list_books.each do |book| %>
       <div class="card cell large-4">
         <div class="card-divider">
-          Дата возврата: <%= key %>
+          <%= book.book.author %> "<%= book.book.title %>"
         </div>
         <div class="card-section">
-          <ul>
-            <% value.each do |book| %>
-              <li><%= book %></li>
-            <% end %>
-          </ul>
+          <p>
+            <p>Срок сдачи: <%= book.date %></p>
+            <a class="button" href="<%= path(@reader, 'return_book', book) %>">Вернуть книгу</a>
+          </p>
         </div>
       </div>
     <% end %>

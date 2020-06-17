@@ -16,8 +16,10 @@ class LibraryApplication
   end
   path :library_new, '/library/add'
   path :reader_new, '/readers/new'
-  path Reader do |reader, action|
-    if action
+  path Reader do |reader, action, book|
+    if book
+      "/readers/#{reader.id}/#{action}/#{book.id}"
+    elsif action
       "/readers/#{reader.id}/#{action}"
     else
       "/readers/#{reader.id}"
@@ -28,6 +30,7 @@ class LibraryApplication
     "/delete_#{delete}"
   end
   path :select_book, '/select_book'
+  path :return_book, 'return_book'
 
   hash_path('/library') do |r|
     # append_view_subdir('books')

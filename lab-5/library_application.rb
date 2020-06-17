@@ -37,6 +37,8 @@ class LibraryApplication < Roda
   require_relative 'routes/library.rb'
   require_relative 'routes/library_add.rb'
   require_relative 'routes/library_give_book.rb'
+  require_relative 'routes/reader_new'
+  require_relative 'routes/return_book'
   require_relative 'routes/select_book.rb'
 
   route do |r|

@@ -10,8 +10,9 @@ class LibraryApplication
 
     r.on Integer do |reader_id|
       @reader = opts[:readers].reader_by_id(reader_id)
-      @reader_list_books = GiveBookList.reader_book_list(opts[:books],
-                                                         @reader.list_of_book_on_hands)
+      @reader_list_books_ = BookReturnList.new
+      @reader_list_books_.upgrade_book_list(@reader.list_of_book_on_hands, opts[:books])
+      @reader_list_books = @reader_list_books_.all_books_return
       next if @reader.nil?
 
       r.is do
@@ -67,12 +68,11 @@ class LibraryApplication
       r.on 'select_book' do
         @parameters = DryResultFormeWrapper.new(SelectBookFormSchema.call(r.params))
         @filtered_books = if @parameters.success?
-                            GiveBookList.fil(@parameters, opts[:books].all_books, @reader.age)
+                            GiveBookList.filter(@parameters, opts[:books].all_books, @reader.age)
                           else
                             opts[:books].all_books
                           end
         @count = GiveBookList.change_age(opts[:books].all_books, @reader.age)
-        pp @count
         r.get do
           @parameters = {}
           view('select_book')
@@ -83,21 +83,25 @@ class LibraryApplication
           view('select_book')
         end
       end
-    end
 
-    r.on 'new' do
-      r.get do
-        @parameters = {}
-        view('reader_new')
-      end
+      r.on 'return_book' do
+        r.on Integer do |book_id|
+          @book_return = @reader_list_books_.book_return_by_id(book_id)
 
-      r.post do
-        @parameters = DryResultFormeWrapper.new(ReaderFormSchema.call(r.params))
-        if @parameters.success?
-          reader = opts[:readers].add_reader(@parameters)
-          r.redirect(path(reader))
-        else
-          view('reader_new')
+          r.get do
+            view('return_books')
+          end
+
+          r.post do
+            @penalty = Calculation.calculate_penalty(@book_return.date)
+            @reader.list_of_book_on_hands = Calculation.delete_book_in_reader(
+              @reader.list_of_book_on_hands, @book_return.date, @book_return.book.id
+            )
+            opts[:books].change_count_books(@book_return.book.id)
+            @book_return = nil
+            @result_penalty = Calculation.calculate_penalty_result(@penalty)
+            view('return_books')
+          end
         end
       end
     end
