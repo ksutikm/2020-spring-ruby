@@ -79,7 +79,7 @@ class LibraryApplication
         end
 
         r.post do
-          @books = opts[:books].all_books
+          # @books = opts[:books].all_books
           view('select_book')
         end
       end
@@ -95,8 +95,7 @@ class LibraryApplication
           r.post do
             @penalty = Calculation.calculate_penalty(@book_return.date)
             @reader.list_of_book_on_hands = Calculation.delete_book_in_reader(
-              @reader.list_of_book_on_hands, @book_return.date, @book_return.book.id
-            )
+              @reader.list_of_book_on_hands, @book_return.date, @book_return.book.id)
             opts[:books].change_count_books(@book_return.book.id)
             @book_return = nil
             @result_penalty = Calculation.calculate_penalty_result(@penalty)

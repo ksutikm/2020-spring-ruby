@@ -30,7 +30,8 @@ class LibraryApplication
     "/delete_#{delete}"
   end
   path :select_book, '/select_book'
-  path :return_book, 'return_book'
+  path :return_book, '/return_book'
+  path :select_genre, '/select_genre'
 
   hash_path('/library') do |r|
     # append_view_subdir('books')

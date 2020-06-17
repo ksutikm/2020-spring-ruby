@@ -34,4 +34,10 @@ module Calculation
     cur1 += cur2[0, cur2.size - 1]
     cur1
   end
+
+  def self.list_genre(books, genre)
+    # pp genre
+    books.select { |book| genre.eql?(book.genre) }
+         .sort { |book1, book2| book1.author <=> book2.author }
+  end
 end

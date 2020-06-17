@@ -1,20 +1,17 @@
 <div class="grid-x grid-margin-x">
   <div class="cell large-12">
-    <h3>Подбор книг</h3>
+    <h3>Подбор книг по жанру</h3>
   </div>
 </div>
 
 <% form({ method: :post }, { obj: @parameters }) do |f| %>
   <div class="grid-x grid-margin-x">
-    <div class="large-6 cell">
-      <%= f.input(:author, type: :text, label: 'Автор', placeholder: 'Эрих Фромм') %>
-    </div>
-    <div class="large-6 cell">
-      <%= f.input(:genre, type: :select, label: 'Жанр', options: BookGenreType.all_types, add_blank: true)%>
-    </div>
     <div class="large-12 cell">
+      <%= f.input(:genre, type: :select, label: 'Жанр', options: BookGenreType.all_types, add_blank: true)%>
       <%= f.button(value: 'Подобрать', class: 'button ') %>
-      <a href="<%= path(@reader) %>" class="button secondary">Отмена</a>
+      <a href="<%= library_path %>" class="button secondary">
+        Назад в главное меню
+      </a>
     </div>
   </div>
 <% end %>
@@ -25,13 +22,9 @@
   </div>
 
   <div class="large-12 cell">
-    <% if @filtered_books.empty? %>
+    <% if @select_books.empty? %>
       <div class="callout warning">
         Согласно вашему фильтру никаких книг не было найдено
-      </div>
-    <% elsif @count == 0 %>
-      <div class="callout warning">
-        Книг подходящих под возраст не было найдено
       </div>
     <% else %>
       <table>
@@ -42,7 +35,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @filtered_books.each do |book| %>
+          <% @select_books.each do |book| %>
             <tr>
               <td><%= book.author %></td>
               <td><%= book.title %></td>

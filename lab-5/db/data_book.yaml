@@ -8,6 +8,14 @@
   :age_rating: 18+
   :number_in_library: 11
   :number_on_hands: 0
+- :id: 5
+  :author: Пушкин
+  :title: Капитанская дочка
+  :inverted_number: 789
+  :genre: Классика
+  :age_rating: 12+
+  :number_in_library: 2
+  :number_on_hands: 0
 - :id: 2
   :author: Достоевский Ф.М.
   :title: Идиот
