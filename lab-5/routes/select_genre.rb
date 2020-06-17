@@ -4,7 +4,6 @@
 class LibraryApplication
   hash_branch('select_genre') do |r|
     @parameters = DryResultFormeWrapper.new(SelectGenreFormSchema.call(r.params))
-    pp @parameters
     @select_books = if @parameters.success?
                       Calculation.list_genre(opts[:books].all_books, @parameters[:genre])
                     else

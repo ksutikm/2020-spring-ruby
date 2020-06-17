@@ -1,0 +1,50 @@
+<div class="grid-x grid-margin-x">
+  <div class="cell large-12">
+    <h3>Cписок книг с просроченными неданными экземплярами</h3>
+  </div>
+</div>
+
+<% form({ method: :post }, { obj: @parameters }) do |f| %>
+  <div class="grid-x grid-margin-x">
+    <div class="large-12 cell">
+      <%= f.input(:date, type: :date, label: 'Дата', placeholder: '2000-06-22') %>
+    </div>
+    <div class="large-12 cell">
+      <%= f.button(value: 'Вывести', class: 'button ') %>
+      <a href="<%= library_path %>" class="button secondary">
+        Назад в главное меню
+      </a>
+    </div>
+  </div>
+<% end %>
+
+<div class="grid-x grid-margin-x">
+  <div class="cell large-12">
+    <h5>Список книг</h5>
+  </div>
+
+  <div class="large-12 cell">
+    <% if @books.empty? %>
+      <div class="callout warning">
+        Согласно вашей дате никаких книг не было найдено
+      </div>
+    <% else %>
+      <table>
+        <thead>
+          <tr>
+            <th>Автор</th>
+            <th>Название</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
+            <tr>
+              <td><%= book.author %></td>
+              <td><%= book.title %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

@@ -5,7 +5,15 @@
   :name: Иван
   :middle_name: Иванович
   :date_of_birth: 2000-06-12
-  :list_of_book_on_hands: {}
+  :list_of_book_on_hands:
+    :2020-06-15:
+    - 2
+    - 4
+    - 4
+    :2020-06-17:
+    - 5
+    :2020-07-04:
+    - 3
   :age: 20
 - :id: 2
   :last_name: Петров

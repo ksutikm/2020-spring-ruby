@@ -32,6 +32,7 @@ class LibraryApplication
   path :select_book, '/select_book'
   path :return_book, '/return_book'
   path :select_genre, '/select_genre'
+  path :delinquency_books, '/delinquency_books'
 
   hash_path('/library') do |r|
     # append_view_subdir('books')

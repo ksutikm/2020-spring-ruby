@@ -9,6 +9,10 @@ module Calculation
     (Date.today - date).to_i
   end
 
+  def self.calculate_date(date1, date2)
+    (Date.parse(date2.to_s) - Date.parse(date1.to_s)).to_i
+  end
+
   def self.calculate_penalty_result(penalty)
     "Ваш штраф: #{penalty} руб."
   end
@@ -36,8 +40,26 @@ module Calculation
   end
 
   def self.list_genre(books, genre)
-    # pp genre
     books.select { |book| genre.eql?(book.genre) }
          .sort { |book1, book2| book1.author <=> book2.author }
+  end
+
+  def self.delinquency_books(readers, date)
+    unique_books = []
+    readers.each do |reader|
+      books = reader.list_of_book_on_hands
+      books.each do |key, value|
+        unique_books += value if calculate_date(key, date).positive?
+      end
+    end
+    unique_books.uniq
+  end
+
+  def self.books_for_id(books, book_list)
+    final_list = []
+    books.each do |id|
+      final_list.append(book_list.book_by_id(id))
+    end
+    final_list
   end
 end

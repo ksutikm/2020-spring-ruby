@@ -30,17 +30,18 @@ class LibraryApplication < Roda
     view('not_found')
   end
 
-  require_relative 'routes/branch_books.rb'
-  require_relative 'routes/branch_delete_book.rb'
-  require_relative 'routes/branch_delete_reader.rb'
-  require_relative 'routes/branch_readers.rb'
-  require_relative 'routes/library.rb'
-  require_relative 'routes/library_add.rb'
-  require_relative 'routes/library_give_book.rb'
+  require_relative 'routes/branch_books'
+  require_relative 'routes/branch_delete_book'
+  require_relative 'routes/branch_delete_reader'
+  require_relative 'routes/branch_readers'
+  require_relative 'routes/delinquency_books'
+  require_relative 'routes/library'
+  require_relative 'routes/library_add'
+  require_relative 'routes/library_give_book'
   require_relative 'routes/reader_new'
   require_relative 'routes/return_book'
-  require_relative 'routes/select_book.rb'
-  require_relative 'routes/select_genre.rb'
+  require_relative 'routes/select_book'
+  require_relative 'routes/select_genre'
 
   route do |r|
     r.public if opts[:serve_static]
